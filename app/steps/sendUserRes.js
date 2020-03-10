@@ -7,6 +7,8 @@ function sendUserRes(Container) {
     } else {
       Container.user.res.send(Container.proxy.resData);
     }
+  } else {
+    Container.user.res.end(Container.proxy.resData);
   }
   return Promise.resolve(Container);
 }
