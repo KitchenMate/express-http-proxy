@@ -38,10 +38,6 @@ function verifyBuffer(rspd, reject) {
 function updateHeaders(res, rspdBefore, rspdAfter, reject) {
   if (!res.headersSent) {
       res.set('content-length', rspdAfter.length);
-  } else if (rspdAfter.length !== rspdBefore.length) {
-      var error = '"Content-Length" is already sent,' +
-          'the length of response data can not be changed';
-      return reject(new Error(error));
   }
 }
 
