@@ -13,7 +13,9 @@ function decorateUserResHeaders(container) {
     .resolve(resolverFn(headers, container.user.req, container.user.res, container.proxy.req, container.proxy.res))
     .then(function(headers) {
       return new Promise(function(resolve) {
-        container.user.res.set(headers);
+        if (!container.user.res.headersSent) {
+          container.user.res.set(headers);
+        }
         resolve(container);
       });
     });
